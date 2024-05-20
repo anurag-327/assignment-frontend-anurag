@@ -4,12 +4,12 @@ import Image from "next/image";
 
 export default function Ranking() {
   return (
-    <div className="md:col-span-3 shadow-sm border row-span-2 p-2 bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-4 shadow-sm border row-span-2 p-2 bg-white rounded-xl md:rounded-3xl">
       <div className="font-semibold text-center text-xl text-gray-500">
         Ranking
       </div>
       <hr className="my-2" />
-      <div className="">
+      <div>
         {chapterWiseRanking.map((data, index) => (
           <>
             <Module data={data} />
@@ -37,10 +37,16 @@ function Module({ data }: { data: ChapterRanking }) {
       </div>
       <div className="flex mt-2 gap-16 justify-center items-center">
         <div>
-          <Image width={100} height={100} src={data.image} alt={data.chapter} />
+          <Image
+            className="scale-110"
+            width={90}
+            height={90}
+            src={data.image}
+            alt={data.chapter}
+          />
         </div>
-        <div className="flex flex-col text-center">
-          <span className="text-4xl font-extrabold">{data.currentRanking}</span>
+        <div className="flex text-sm flex-col text-center">
+          <span className="text-3xl font-extrabold">{data.currentRanking}</span>
           <span>(min: {data.minRanking})</span>
           <span>{getComment(data.currentRanking)}</span>
         </div>

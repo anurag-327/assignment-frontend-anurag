@@ -19,6 +19,7 @@ import {
 } from "chart.js";
 import { useCallback, useState } from "react";
 import { Line } from "react-chartjs-2";
+import Animate from "./ui/Animate";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -44,7 +45,6 @@ export default function Rating() {
     ],
   };
   const options = {
-    responsive: true,
     scales: {
       x: {
         display: false,
@@ -83,10 +83,8 @@ export default function Rating() {
       },
     },
   };
-  console.log(selectedData);
-
   return (
-    <div className="md:col-span-3 flex flex-col justify-center items-center relative shadow-sm border p-2 bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 bg-white rounded-xl w-full md:rounded-3xl">
       {selectedData ? (
         <div className="flex top-2 left-4 absolute w-fit gap-20">
           <div className="flex text-center flex-col gap-2">
@@ -107,18 +105,20 @@ export default function Rating() {
           </div>
         </div>
       ) : (
-        <div className="text-sm text-gray-500">
+        <div className="text-sm w-full text-center text-gray-500">
           Click on a data point to view details
         </div>
       )}
 
-      <div
-        className={`md:w-full ${
-          selectedData && "mt-10"
-        } items-end flex justify-center h-[140px]   mx-auto`}
-      >
-        <Line width={240} height={100} options={options} data={data} />
-      </div>
+      <Animate>
+        <div
+          className={`w-full ${
+            selectedData && "mt-10"
+          } items-end flex  justify-center w-[300px] md:w-[600px] h-[200px] lg:w-[400px] lg:h-[140px] mx-auto`}
+        >
+          <Line width={240} height={100} options={options} data={data} />
+        </div>
+      </Animate>
     </div>
   );
 }

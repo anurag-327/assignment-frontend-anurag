@@ -2,3 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.color-empty {
+    fill: #ebedf0;
+  }
+  
+  .color-scale-0 {
+    fill: #ebedf0;
+  }
+  
+  .color-scale-1 {
+    fill: #c6e48b;
+  }
+  
+  .color-scale-2 {
+    fill: #7bc96f;
+  }
+  
+  .color-scale-3 {
+    fill: #239a3b;
+  }
+  
+  .color-scale-4 {
+    fill: #196127;
+  }
+  .color-scale-10 {
+    fill: #3f6212;
+  }
+
+  @layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+  
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 4px;
+}
+
+
+  

@@ -79,3 +79,8 @@ export interface Badge {
   date: string;
   image: StaticImageData;
 }
+
+export interface HeatmapValue {
+  date: string;
+  count: number;
+}

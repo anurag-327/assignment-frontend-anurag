@@ -1,5 +1,6 @@
 "use client";
 import chapterWiseData from "@/data/chapterWiseData";
+import userData from "@/data/userData";
 import useStore from "@/zustand/useStore.store";
 import {
   CaretDown,
@@ -13,7 +14,7 @@ import { useState } from "react";
 
 export default function UserDetails() {
   return (
-    <div className="md:w-[300px] shadow-sm w-full p-4 bg-white rounded-2xl">
+    <div className="lg:w-[300px] w-full p-4 bg-white border shadow-sm md:rounded-3xl rounded-xl">
       <div className="flex gap-2">
         <div className="">
           <Image
@@ -26,10 +27,10 @@ export default function UserDetails() {
         </div>
         <div className="flex flex-col gap-1 justify-end">
           <h3 className=" text-2xl md:text-xl font-semibold">
-            Siddharth Singh
+            {userData.name}
           </h3>
           <span className=" text-sm md:text-xs text-gray-600 font-semibold">
-            Last Updated: 18 May 2024
+            Last Updated: 20 May 2024
           </span>
         </div>
       </div>
@@ -44,7 +45,7 @@ export default function UserDetails() {
           <div>
             <GraduationCap size={24} />
           </div>
-          <span className="text-sm">Delhi Technical University</span>
+          <span className="text-sm">{userData.graduation}</span>
         </div>
         <div className="flex gap-2 items-center">
           <div>
@@ -72,7 +73,7 @@ function ChapterWiseReportStats() {
   return (
     <div className="mt-1">
       <div className="flex w-full justify-between">
-        <h4 className="text-lg font-semibold text-gray-500">
+        <h4 className="text-lg font-semibold text-gray-600">
           Chapter wise stats
         </h4>
         <button>
@@ -97,7 +98,7 @@ function ChapterWiseReportStats() {
             <li key={chapter.chapter} className="ml-6 list-none">
               <button
                 key={chapter.chapter}
-                className={`p-1 rounded-md hover:bg-gray-100 font-semibold text-lg text-gray-500`}
+                className={`p-1 rounded-md hover:bg-gray-100 font-[450] text-gray-500`}
                 onClick={() => setChapter(chapter)}
               >
                 {chapter.chapter}

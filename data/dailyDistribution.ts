@@ -1,5 +1,5 @@
 import { DailyDistribution } from "@/@types/types";
-
+const days = 180;
 export const providedData: DailyDistribution[] = [
   { date: "2024/04/10", count: 1 },
   { date: "2024/04/11", count: 2 },
@@ -68,10 +68,10 @@ const formatDate = (date: Date): string => {
 const lastDate = new Date(providedData[providedData.length - 1].date);
 
 const dailyDistribution: DailyDistribution[] = Array.from(
-  { length: 365 },
+  { length: days },
   (_, index) => {
     const date = new Date(lastDate);
-    date.setDate(date.getDate() - 365 + index);
+    date.setDate(date.getDate() - days + index);
     return {
       date: formatDate(date),
       count: 0,
@@ -90,4 +90,21 @@ const heatMapData = dailyDistribution.map((item) => {
   return item;
 });
 
+const groupDataByMonth = (data: any) => {
+  const monthMap = new Map();
+
+  data.forEach(({ date, count }: DailyDistribution) => {
+    const [year, month] = date.split("/").slice(0, 2);
+    const monthKey = `${year}/${month}`;
+
+    if (!monthMap.has(monthKey)) {
+      monthMap.set(monthKey, []);
+    }
+    monthMap.get(monthKey).push({ date, count });
+  });
+
+  return monthMap;
+};
+export const monthlydata = groupDataByMonth(heatMapData);
 export default heatMapData;
+// export monthlydata;

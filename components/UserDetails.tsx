@@ -1,9 +1,15 @@
+"use client";
+import chapterWiseData from "@/data/chapterWiseData";
+import useStore from "@/zustand/useStore.store";
 import {
+  CaretDown,
+  CaretUp,
   Envelope,
   EnvelopeSimple,
   GraduationCap,
 } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
+import { useState } from "react";
 
 export default function UserDetails() {
   return (
@@ -54,6 +60,52 @@ export default function UserDetails() {
         Overall stats
       </div>
       <hr className="my-4" />
+      <ChapterWiseReportStats />
+    </div>
+  );
+}
+
+function ChapterWiseReportStats() {
+  const chapterData = useStore((state) => state.chapter);
+  const setChapter = useStore((state) => state.setChapter);
+  const [showDropdown, setShowDropdown] = useState(true);
+  return (
+    <div className="mt-1">
+      <div className="flex w-full justify-between">
+        <h4 className="text-lg font-semibold text-gray-500">
+          Chapter wise stats
+        </h4>
+        <button>
+          {showDropdown ? (
+            <CaretUp
+              onClick={() => setShowDropdown(!showDropdown)}
+              weight="bold"
+              size={20}
+            />
+          ) : (
+            <CaretDown
+              onClick={() => setShowDropdown(!showDropdown)}
+              weight="bold"
+              size={20}
+            />
+          )}
+        </button>
+      </div>
+      {showDropdown && (
+        <div className="flex flex-1 mt-2 flex-col justify-between gap-1">
+          {chapterWiseData.map((chapter, index) => (
+            <li key={chapter.chapter} className="ml-6 list-none">
+              <button
+                key={chapter.chapter}
+                className={`p-1 rounded-md hover:bg-gray-100 font-semibold text-lg text-gray-500`}
+                onClick={() => setChapter(chapter)}
+              >
+                {chapter.chapter}
+              </button>
+            </li>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

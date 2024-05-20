@@ -1,24 +1,94 @@
 "use client";
+import { Module, ModuleWiseDistribution } from "@/@types/types";
+import moduleWiseDistribution from "@/data/moduleWiseDistribution";
+import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
-import chapterWiseRanking from "@/data/chapterWiseRanking";
-
+ChartJS.register(ArcElement, Tooltip, Legend);
 export default function ChapterWiseReport() {
   return (
-    <div className="md:col-span-3 p-2 bg-white rounded-xl">
-      <div>
-        <div></div>
+    <div className="md:col-span-3 shadow-sm border px-4 py-2 md:row-span-2 bg-white rounded-xl md:rounded-3xl">
+      <div className="font-semibold text-center text-xl text-gray-500">
+        Questions Solved
+      </div>
+      <hr className="my-2" />
+      <div className="flex flex-col gap-2">
+        {moduleWiseDistribution.map(
+          (x: ModuleWiseDistribution, index: number) => {
+            return (
+              <>
+                <ModuleDiv key={x.name} data={x} />
+                {index >= 0 && index < moduleWiseDistribution.length - 1 && (
+                  <hr />
+                )}
+              </>
+            );
+          }
+        )}
       </div>
     </div>
   );
 }
 
-function Score({ score }: { score: number }) {
+function ModuleDiv({ data }: { data: ModuleWiseDistribution }) {
+  const label = data.data.map((x: Module) => x.name);
+  const values = data.data.map((x: Module) => x.question);
   return (
     <div>
-      <div className="font-semibold text-lg text-gray-500">Total Questions</div>
-      <div>
-        <span className="text-5xl font-extrabold">{score}</span>
+      <div className="font-semibold text-xl text-gray-500 text-center">
+        {data.name}
       </div>
+      <div className="flex gap-2 justify-center mt-4">
+        <div>
+          <ChartDiv labels={label} values={values} />
+        </div>
+        <div className="flex-1 h-full px-4 flex flex-col gap-3 p-1">
+          {data.data.map((x: Module) => (
+            <div
+              key={x.name}
+              className="flex text-xl font-semibold justify-between text-gray-500"
+            >
+              <div>{x.name}</div>
+              <div>{x.question}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ChartDiv({ labels, values }: { labels: string[]; values: number[] }) {
+  const chartData = {
+    labels: labels,
+    datasets: [
+      {
+        label: "Value",
+        data: values,
+        backgroundColor: [
+          "rgba(255, 99, 132, 0.6)", // Adjust colors as needed
+          "rgba(54, 162, 235, 0.6)",
+          "rgba(255, 206, 86, 0.6)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
+  const options = {
+    cutout: "80%",
+    plugins: {
+      legend: {
+        display: false, // Hide legend
+      },
+    },
+  };
+  const total = values.reduce((a, b) => a + b, 0);
+  return (
+    <div className="flex-1 h-[120px] w-[120px] relative mx-auto">
+      <span className="absolute text-4xl font-extrabold top-[40px] z-0 left-[38px] ">
+        {total}
+      </span>
+      <Doughnut options={options} data={chartData} />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import { StaticImageData } from "next/image";
+
 export interface UserData {
   name: string;
   country: string;
@@ -9,18 +11,17 @@ export interface UserData {
 }
 export interface DailyDistribution {
   date: string;
-  numberOfQuestions: number;
+  count: number;
 }
 
 export interface Module {
-  sNo: string;
-  division: string;
+  name: string;
   question: number;
 }
 
 export interface ModuleWiseDistribution {
-  module1: Module[];
-  module2: Module[];
+  name: string;
+  data: Module[];
 }
 
 export interface TestDistribution {
@@ -31,6 +32,7 @@ export interface TestDistribution {
 export interface TestScore {
   testName: string;
   testScore: number;
+  date: string;
 }
 
 export interface ScoreDistribution {
@@ -54,4 +56,26 @@ export interface ChapterRanking {
   chapter: string;
   currentRanking: number;
   minRanking: number;
+  image: StaticImageData;
+}
+
+export interface data {
+  chapter: string;
+  currentRanking: number;
+  minRanking: number;
+  testScores: TestScore[];
+  totalTests: number;
+}
+
+export interface award {
+  id: string;
+  image: StaticImageData;
+  title: string;
+}
+
+export interface Badge {
+  id: number;
+  title: string;
+  date: string;
+  image: StaticImageData;
 }

@@ -1,6 +1,6 @@
 import { TopicAnalysis } from "@/@types/types";
 
-const topicAnalysis: TopicAnalysis[] = [
+const topicWiseData: TopicAnalysis[] = [
   { topic: "Topic1", count: 14 },
   { topic: "Topic2", count: 10 },
   { topic: "Topic3", count: 12 },
@@ -18,4 +18,4 @@ const topicAnalysis: TopicAnalysis[] = [
   { topic: "Topic15", count: 11 },
 ];
 
-export default topicAnalysis;
+export default topicWiseData;

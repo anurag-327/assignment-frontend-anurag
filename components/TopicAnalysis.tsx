@@ -54,7 +54,7 @@ export default function TopicAnalysis() {
     },
   };
   return (
-    <div className="md:col-span-4 shadow-sm border px-6 py-2 bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-8 lg:col-span-4 shadow-sm border px-6 py-2 bg-white rounded-xl md:rounded-3xl">
       <h3 className="text-xl font-semibold text-gray-500">Topic Analysis</h3>
       {
         // @ts-ignore

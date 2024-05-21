@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Ranking() {
   return (
-    <div className="md:col-span-4 shadow-sm border row-span-2 p-2 bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-8 lg:col-span-4 shadow-sm border row-span-2 p-2 bg-white rounded-xl md:rounded-3xl">
       <div className="font-semibold text-center text-xl text-gray-500">
         Ranking
       </div>

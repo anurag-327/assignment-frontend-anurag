@@ -1,6 +1,5 @@
 "use client";
 import { Badge } from "@/@types/types";
-import awards from "@/data/awards";
 import badges from "@/data/badges";
 import { X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
@@ -8,14 +7,14 @@ import { useState } from "react";
 export default function Awards() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className="md:col-span-4 p-4 shadow-sm border bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-8 lg:col-span-4 p-4 shadow-sm border bg-white rounded-xl md:rounded-3xl">
       {showModal ? (
         <Modal setShowModal={setShowModal} />
       ) : (
         <div>
           <h3 className="text-2xl font-semibold text-gray-500">Awards</h3>
           <div className="grid grid-cols-4 w-full">
-            {awards.map((award, index) => (
+            {badges.slice(0, 4).map((award, index) => (
               <div key={award.id}>
                 <Image src={award.image} alt={award.title} />
               </div>
@@ -48,7 +47,7 @@ function Modal({
           </button>
         </div>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-4 w-full  justify-center items-center">
-          {badges.map((award, index) => (
+          {badges.slice(4).map((award, index) => (
             <Card data={award} key={index} />
           ))}
         </div>

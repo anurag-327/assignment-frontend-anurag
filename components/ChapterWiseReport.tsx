@@ -4,11 +4,10 @@ import moduleWiseDistribution from "@/data/moduleWiseDistribution";
 import { Doughnut } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import Animate from "./ui/Animate";
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default function ChapterWiseReport() {
   return (
-    <div className="md:col-span-4 shadow-sm border px-4 py-2 md:row-span-2 bg-white rounded-xl md:rounded-3xl">
+    <div className=" md:col-span-8 lg:col-span-4 shadow-sm border px-4 py-2 md:row-span-2 bg-white rounded-xl md:rounded-3xl">
       <div className="font-semibold text-center text-xl text-gray-500">
         Questions Solved
       </div>
@@ -20,7 +19,7 @@ export default function ChapterWiseReport() {
               <>
                 <ModuleDiv key={x.name} data={x} />
                 {index >= 0 && index < moduleWiseDistribution.length - 1 && (
-                  <hr />
+                  <hr key={x.name} />
                 )}
               </>
             );

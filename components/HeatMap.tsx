@@ -1,28 +1,21 @@
 "use client";
-import providedData, { monthlydata } from "@/data/dailyDistribution";
+import { monthlydata } from "@/data/dailyDistribution";
 import userData from "@/data/userData";
-import { Tooltip as ReactTooltip } from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 import CalendarHeatmap from "react-calendar-heatmap";
 import HeatMap, { HeatMapValue } from "@uiw/react-heat-map";
-import Tooltip from "@uiw/react-tooltip";
 import "react-calendar-heatmap/dist/styles.css";
-
-const getMonthStartEndDates = (monthKey: string) => {
-  const [year, month] = monthKey.split("/").map(Number);
-  const startDate = new Date(year, month - 1, 1);
-  const endDate = new Date(year, month, 0);
-  return { startDate, endDate };
-};
+import { getMonthStartEndDates } from "@/utils/helper";
 
 export default function HeatMapPage() {
   return (
-    <div className="lg:col-span-6 py-2 md:px-4 px-2 lg:px-8 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
-      <div className="flex flex-wrap w-full overflow-scroll items-center justify-center flex-row gap-6">
-        <div className="flex w-full flex-col flex-1 h-full justify-center">
+    <div className="md:col-span-8 lg:col-span-6 py-2 md:px-4 px-2 xl:px-8 lg:px-4 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
+      <div className="flex w-full flex-col overflow-scroll items-center justify-center sm:flex-row gap-6">
+        <div className="flex order-2 sm:order-1 w-full flex-col flex-1 h-full justify-center">
           <MapHeader />
           <Map />
         </div>
-        <div className="flex flex-col gap-2 items-center">
+        <div className="flex flex-col order-1 sm:order-2 gap-2 items-center">
           <StreakData />
         </div>
       </div>
@@ -32,7 +25,7 @@ export default function HeatMapPage() {
 
 function MapHeader() {
   return (
-    <div className="flex gap-6 px-2 lg:px-4 w-full justify-between">
+    <div className="flex sm:flex-row flex-col gap-1 sm:gap-6 px-2 lg:px-4 w-full justify-between">
       <div>
         <span className="text-sm font-semibold text-black">
           67{" "}
@@ -51,7 +44,7 @@ function MapHeader() {
 }
 function Map() {
   return (
-    <div className="flex gap-2 mt-4 md:max-w-[400px] lg:max-w-[420px] mx-auto w-full no-scrollbar overflow-scroll">
+    <div className="flex gap-2 mt-4 md:max-w-[400px] lg:max-w-[420px] justify-center w-full no-scrollbar overflow-scroll">
       {Array.from(monthlydata.keys()).map((monthKey) => {
         const monthData = monthlydata.get(monthKey);
         const { startDate, endDate } = getMonthStartEndDates(monthKey);
@@ -71,13 +64,12 @@ function Map() {
                 }
                 return `color-scale-${value.count}`;
               }}
-              tooltipDataAttrs={(value: HeatMapValue) => {
-                return {
-                  "data-tip": `${value.date}: ${value.count} activities`,
-                };
-              }}
+              tooltipDataAttrs={(value: HeatMapValue) => ({
+                "data-tooltip-id": "tooltip",
+                "data-tooltip-content": `${value.count} submisstions on ${value.date}`,
+              })}
             />
-            <Tooltip />
+            <Tooltip id="tooltip" />
           </div>
         );
       })}
@@ -94,7 +86,7 @@ function StreakData() {
           <span className="text-black">{userData.currentStreak}</span>
         </span>
       </div>
-      <div className="flex mt-4 flex-col gap-1 text-center">
+      <div className="flex sm:mt-4 flex-col gap-1 text-center">
         <span className="text-6xl font-extrabold">{userData.maxStreak}</span>
         <span className="text-xs font-semibold text-gray-600">Max. Streak</span>
       </div>

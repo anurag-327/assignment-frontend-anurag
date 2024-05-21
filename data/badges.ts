@@ -1,10 +1,9 @@
 import { Badge } from "@/@types/types";
-// import badge1 from "@/public/badge1.jpg";
-// import badge2 from "@/public/badge2.jpg";
-// import badge3 from "@/public/badge3.jpg";
-// import badge4 from "@/public/badge4.jpg";
-// import badge5 from "@/public/badge5.jpg";
-// import badge6 from "@/public/badge6.jpg";
+import { award } from "@/@types/types";
+import award1 from "../public/award1.png";
+import award2 from "../public/award2.png";
+import award3 from "../public/award3.png";
+import award4 from "../public/award4.png";
 import knight from "@/public/knight.png";
 import progskill from "@/public/progskill.jpg";
 import dsskill from "@/public/dsskill.jpg";
@@ -22,6 +21,30 @@ import febbadge from "@/public/febbadge.png";
 import marbadge from "@/public/marchbadge.png";
 import aprbadge from "@/public/aprbadge.png";
 const badges: Badge[] = [
+  {
+    id: 16,
+    image: award1,
+    date: "2024-01-01",
+    title: "Award 1",
+  },
+  {
+    id: 17,
+    image: award2,
+    date: "2024-01-01",
+    title: "Award2",
+  },
+  {
+    id: 18,
+    image: award3,
+    date: "2024-01-01",
+    title: "Award3",
+  },
+  {
+    id: 19,
+    image: award4,
+    title: "Award4",
+    date: "2024-01-01",
+  },
   {
     id: 1,
     title: "Knight",

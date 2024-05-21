@@ -128,7 +128,7 @@ In this project, I utilized the `react-chartjs-2` library to create interactive 
 
 ## Introduction
 
-This documentation outlines the process of creating a monthly activity heatmap for a student dashboard using Next.js, TypeScript, and React Calendar Heatmap. The focus is on the preparation of data, implementation of the heatmap component, and rendering the heatmap with monthly grouped data.
+This section outlines the process of creating a monthly activity heatmap for a student dashboard using Next.js, TypeScript, and React Calendar Heatmap. The focus is on the preparation of data, implementation of the heatmap component, and rendering the heatmap with monthly grouped data.
 
 ## Data Preparation
 

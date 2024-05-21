@@ -46,7 +46,7 @@ function MapHeader() {
 function Map() {
   return (
     <div className="flex gap-2 mt-4 md:max-w-[400px] lg:max-w-[420px] justify-center w-full no-scrollbar overflow-scroll">
-      {Array.from(monthlydata.keys()).map((monthKey) => {
+      {Array.from(monthlydata.keys()).map((monthKey, index) => {
         const monthData = monthlydata.get(monthKey);
         const { startDate, endDate } = getMonthStartEndDates(monthKey);
         return (
@@ -67,7 +67,10 @@ function Map() {
               }}
               tooltipDataAttrs={(value: HeatMapValue) => ({
                 "data-tooltip-id": "tooltip",
-                "data-tooltip-content": `${value.count} submisstions on ${value.date}`,
+                "data-tooltip-content":
+                  value.count != null
+                    ? `${value.count} submissions on ${value.date}`
+                    : `No submissions found`,
               })}
             />
             <Tooltip id="tooltip" />

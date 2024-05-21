@@ -17,9 +17,9 @@ export default function ChapterWiseReport() {
           (x: ModuleWiseDistribution, index: number) => {
             return (
               <>
-                <ModuleDiv key={x.name} data={x} />
+                <ModuleDiv key={index} data={x} />
                 {index >= 0 && index < moduleWiseDistribution.length - 1 && (
-                  <hr key={x.name} />
+                  <hr key={index + 1} />
                 )}
               </>
             );

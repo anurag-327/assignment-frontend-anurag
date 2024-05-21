@@ -1,6 +1,8 @@
+// **NOTE**: This is a mock data file. It is used to simulate the actual user's activity data fetched from server.
+
 import { DailyDistribution } from "@/@types/types";
 import { formatDate, groupDataByMonth } from "@/utils/helper";
-const days = 180;
+const days = 170;
 export const providedData: DailyDistribution[] = [
   { date: "2024/04/10", count: 1 },
   { date: "2024/04/11", count: 2 },

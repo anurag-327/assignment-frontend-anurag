@@ -114,13 +114,13 @@ export default function Rating() {
 
       <Animate>
         <div
-          className={`w-full ${
+          className={`${
             selectedData && "mt-16"
-          } items-end flex mt-5 justify-center w-[300px] overflow-scroll md:w-[500px] h-[200px] lg:w-[400px] lg:h-[140px] mx-auto`}
+          } items-end flex mt-5 justify-center w-[280px] overflow-scroll md:w-[500px] h-[200px] lg:w-[400px] lg:h-[140px] mx-auto`}
         >
           <Line options={options} data={data} />
           <span className="text-xs absolute left-10 text-gray-400">2023</span>
-          <span className="text-xs -ml-4 text-gray-400">2024</span>
+          <span className="text-xs -ml-10 md:-ml-4 text-gray-400">2024</span>
         </div>
       </Animate>
     </div>

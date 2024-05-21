@@ -20,6 +20,7 @@ import {
 import { useCallback, useState } from "react";
 import { Line } from "react-chartjs-2";
 import Animate from "./ui/Animate";
+import { poppins } from "@/fonts/font";
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -34,7 +35,7 @@ export default function Rating() {
   const chapter = useStore((state) => state.chapter);
   const [selectedData, setSelectedData] = useState<type | null>(null);
   const data = {
-    labels: chapter.testScores.map((item) => item),
+    labels: chapter.testScores.map((item) => `${item.testName}-${item.date}`),
     datasets: [
       {
         label: "Test Score",
@@ -88,20 +89,20 @@ export default function Rating() {
     <div className="md:col-span-8 order-4 md:order-5 lg:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 md:p-4 bg-white rounded-xl w-full md:rounded-3xl">
       {selectedData ? (
         <div className="flex top-2 left-4 absolute w-fit gap-20">
-          <div className="flex text-center flex-col gap-2">
-            <span className="text-xl font-semibold text-gray-600">
+          <div className="flex text-center flex-col">
+            <span className="text-lg font-semibold text-gray-600">
               Test Score
             </span>
-            <span className="text-3xl mt-1 font-extrabold">
+            <span className={`text-3xl font-extrabold ${poppins.className}`}>
               {selectedData.value}
             </span>
           </div>
           <div className="flex flex-col ">
             <p className="text-sm text-gray-400 font-semibold">
-              {data.labels[selectedData.index].date}
+              {data.labels[selectedData.index].split("-")[1]}
             </p>
             <p className="font-bold">
-              {data.labels[selectedData.index].testName}
+              {data.labels[selectedData.index].split("-")[0]}
             </p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-# Student Dashboard Documentation
+# FrontEnd Internship Documentation
 
 ## Table of Contents
 

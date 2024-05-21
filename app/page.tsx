@@ -11,7 +11,7 @@ import UserDetails from "@/components/UserDetails";
 export default function Home() {
   return (
     <main className="w-full mt-14">
-      <div className="mx-auto w-fit">
+      <div className="mx-auto w-fit px-3 md:px-0">
         <UserDetails />
         <div className="flex-1 md:ml-[318px]  md:max-w-4xl gap-4 lg:gap-4 grid grid-cols-1 md:grid-cols-8 md:grid-rows-5">
           <TotalQuestions />

@@ -1,5 +1,5 @@
 "use client";
-import { monthlydata } from "@/data/dailyDistribution";
+import { monthlydata, providedData } from "@/data/dailyDistribution";
 import userData from "@/data/userData";
 import { Tooltip } from "react-tooltip";
 import CalendarHeatmap from "react-calendar-heatmap";
@@ -10,7 +10,7 @@ import { poppins } from "@/fonts/font";
 
 export default function HeatMapPage() {
   return (
-    <div className="md:col-span-8 order-2 lg:col-span-6 py-2 md:px-4 px-2 xl:px-8 lg:px-4 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
+    <div className="md:col-span-8 order-2 lg:col-span-6 py-2 md:px-4 px-2  lg:px-4 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
       <div className="flex w-full flex-col overflow-scroll items-center md:items-start justify-center sm:flex-row gap-6">
         <div className="flex order-2 sm:order-1 w-full flex-col flex-1 h-full justify-center items-center">
           <MapHeader />
@@ -25,11 +25,12 @@ export default function HeatMapPage() {
 }
 
 function MapHeader() {
+  const total = providedData.reduce((acc, value) => acc + value.count, 0);
   return (
     <div className="flex sm:flex-row flex-col gap-1 sm:gap-6 px-2 lg:px-4 w-full justify-between">
       <div>
         <span className="text-sm font-semibold text-black">
-          67{" "}
+          {total}{" "}
           <span className="text-gray-500 text-sm">
             submissions in past 6 months
           </span>
@@ -37,7 +38,8 @@ function MapHeader() {
       </div>
       <div>
         <span className="text-xs font-semibold text-gray-400">
-          Total Active Days: <span className="text-black">35</span>
+          Total Active Days:{" "}
+          <span className="text-black">{providedData.length}</span>
         </span>
       </div>
     </div>
@@ -68,7 +70,7 @@ function Map() {
               tooltipDataAttrs={(value: HeatMapValue) => ({
                 "data-tooltip-id": "tooltip",
                 "data-tooltip-content":
-                  value.count != null
+                  value.date != null && value.count > 0
                     ? `${value.count} submissions on ${value.date}`
                     : `No submissions found`,
               })}

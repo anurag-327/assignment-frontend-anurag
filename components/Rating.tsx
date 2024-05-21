@@ -39,8 +39,8 @@ export default function Rating() {
       {
         label: "Test Score",
         data: chapter.testScores.map((item) => item.testScore),
-        borderColor: "rgb(255, 99, 132)",
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        borderColor: "#fdba74",
+        backgroundColor: "#fb923c",
       },
     ],
   };
@@ -85,14 +85,14 @@ export default function Rating() {
     },
   };
   return (
-    <div className="md:col-span-8 order-4 md:order-5 lg:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 bg-white rounded-xl w-full md:rounded-3xl">
+    <div className="md:col-span-8 order-4 md:order-5 lg:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 md:p-4 bg-white rounded-xl w-full md:rounded-3xl">
       {selectedData ? (
         <div className="flex top-2 left-4 absolute w-fit gap-20">
           <div className="flex text-center flex-col gap-2">
-            <span className="text-xl font-semibold text-gray-500">
+            <span className="text-xl font-semibold text-gray-600">
               Test Score
             </span>
-            <span className="text-3xl font-extrabold">
+            <span className="text-3xl mt-1 font-extrabold">
               {selectedData.value}
             </span>
           </div>
@@ -118,6 +118,8 @@ export default function Rating() {
           } items-end flex mt-5 justify-center w-[300px] overflow-scroll md:w-[500px] h-[200px] lg:w-[400px] lg:h-[140px] mx-auto`}
         >
           <Line options={options} data={data} />
+          <span className="text-xs absolute left-10 text-gray-400">2023</span>
+          <span className="text-xs -ml-4 text-gray-400">2024</span>
         </div>
       </Animate>
     </div>

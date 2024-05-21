@@ -43,9 +43,9 @@ function ModuleDiv({ data }: { data: ModuleWiseDistribution }) {
           <ChartDiv labels={label} values={values} />
         </Animate>
         <div className="flex-1 h-full px-4 flex flex-col gap-3 p-1">
-          {data.data.map((x: Module) => (
+          {data.data.map((x: Module, index: number) => (
             <div
-              key={x.name}
+              key={index}
               className="flex text-lg justify-between font-[700] text-gray-500"
             >
               <div>{x.name}</div>
@@ -65,11 +65,7 @@ function ChartDiv({ labels, values }: { labels: string[]; values: number[] }) {
       {
         label: "Value",
         data: values,
-        backgroundColor: [
-          "rgba(255, 99, 132, 0.6)", // Adjust colors as needed
-          "rgba(54, 162, 235, 0.6)",
-          "rgba(255, 206, 86, 0.6)",
-        ],
+        backgroundColor: ["#fdba74", "#fcd34d", "#4ade80"],
         borderWidth: 1,
       },
     ],

@@ -32,6 +32,8 @@ export default function TopicAnalysis() {
           "rgba(255, 99, 132, 0.6)", // Adjust colors as needed
           "rgba(54, 162, 235, 0.6)",
           "rgba(255, 206, 86, 0.6)",
+          "rgba(255, 0, 0, 0.6)", // Bold red color
+          "rgba(0, 255, 0, 0.6)", // Bold green color
         ],
         borderRadius: 10,
       },

@@ -85,7 +85,7 @@ export default function Rating() {
     },
   };
   return (
-    <div className="md:col-span-8 lg:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 bg-white rounded-xl w-full md:rounded-3xl">
+    <div className="md:col-span-8 order-4 md:order-5 lg:col-span-4 flex flex-col justify-center items-center relative shadow-sm border p-2 bg-white rounded-xl w-full md:rounded-3xl">
       {selectedData ? (
         <div className="flex top-2 left-4 absolute w-fit gap-20">
           <div className="flex text-center flex-col gap-2">

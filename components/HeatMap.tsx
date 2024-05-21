@@ -9,9 +9,9 @@ import { getMonthStartEndDates } from "@/utils/helper";
 
 export default function HeatMapPage() {
   return (
-    <div className="md:col-span-8 lg:col-span-6 py-2 md:px-4 px-2 xl:px-8 lg:px-4 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
-      <div className="flex w-full flex-col overflow-scroll items-center justify-center sm:flex-row gap-6">
-        <div className="flex order-2 sm:order-1 w-full flex-col flex-1 h-full justify-center">
+    <div className="md:col-span-8 order-2 lg:col-span-6 py-2 md:px-4 px-2 xl:px-8 lg:px-4 shadow-sm border bg-white rounded-xl md:rounded-3xl flex justify-center items-center">
+      <div className="flex w-full flex-col overflow-scroll items-center md:items-start justify-center sm:flex-row gap-6">
+        <div className="flex order-2 sm:order-1 w-full flex-col flex-1 h-full justify-center items-center">
           <MapHeader />
           <Map />
         </div>

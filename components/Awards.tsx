@@ -7,7 +7,7 @@ import { useState } from "react";
 export default function Awards() {
   const [showModal, setShowModal] = useState(false);
   return (
-    <div className="md:col-span-8 lg:col-span-4 p-4 shadow-sm border bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-8 order-6 lg:col-span-4 p-4 shadow-sm border bg-white rounded-xl md:rounded-3xl">
       {showModal ? (
         <Modal setShowModal={setShowModal} />
       ) : (

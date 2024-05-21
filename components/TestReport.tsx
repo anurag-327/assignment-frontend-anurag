@@ -11,7 +11,7 @@ export default function TestReport() {
   const chapterData = useStore((state) => state.chapter);
   const setChapter = useStore((state) => state.setChapter);
   return (
-    <div className="md:col-span-8 lg:col-span-4 shadow-sm border flex gap-2 p-8 bg-white rounded-xl items-center  md:rounded-3xl">
+    <div className="md:col-span-8 order-3 lg:col-span-4 shadow-sm border flex gap-2 p-8 bg-white rounded-xl items-center  md:rounded-3xl">
       <div className="flex w-fit px-6  items-center gap-2 flex-col">
         <div className="font-semibold text-lg text-gray-500">Total Test</div>
         <div>

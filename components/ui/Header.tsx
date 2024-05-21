@@ -1,3 +1,7 @@
 export default function Header() {
-  return <header className="p-2 bg-white  border-b shadow-sm">Header</header>;
+  return (
+    <header className="p-2 z-50 fixed top-0 w-full bg-white  border-b shadow-sm">
+      Assignment-Anurag
+    </header>
+  );
 }

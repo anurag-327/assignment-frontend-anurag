@@ -20,8 +20,8 @@ ChartJS.register(
   Legend
 );
 export default function TopicAnalysis() {
-  const labels = topicWiseData.map((data) => data.topic);
-  const values = topicWiseData.map((data) => data.count);
+  const labels = topicWiseData.slice(0, 10).map((data) => data.topic);
+  const values = topicWiseData.slice(0, 10).map((data) => data.count);
   const chartData = {
     labels: labels,
     datasets: [
@@ -54,7 +54,7 @@ export default function TopicAnalysis() {
     },
   };
   return (
-    <div className="md:col-span-8 lg:col-span-4 shadow-sm border px-6 py-2 bg-white rounded-xl md:rounded-3xl">
+    <div className="md:col-span-8 order-8 lg:col-span-4 shadow-sm border px-6 bg-white rounded-xl md:rounded-3xl">
       <h3 className="text-xl font-semibold text-gray-500">Topic Analysis</h3>
       {
         // @ts-ignore

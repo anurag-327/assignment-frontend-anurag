@@ -7,7 +7,7 @@ import Animate from "./ui/Animate";
 ChartJS.register(ArcElement, Tooltip, Legend);
 export default function ChapterWiseReport() {
   return (
-    <div className=" md:col-span-8 lg:col-span-4 shadow-sm border px-4 py-2 md:row-span-2 bg-white rounded-xl md:rounded-3xl">
+    <div className=" md:col-span-8 order-5 md:order-4 lg:col-span-4 shadow-sm border px-4 py-2 md:row-span-2 bg-white rounded-xl md:rounded-3xl">
       <div className="font-semibold text-center text-xl text-gray-500">
         Questions Solved
       </div>
@@ -38,7 +38,7 @@ function ModuleDiv({ data }: { data: ModuleWiseDistribution }) {
       <div className="font-semibold text-xl text-gray-600 text-center">
         {data.name}
       </div>
-      <div className="flex gap-2 justify-center mt-4">
+      <div className="flex z-20 gap-2 justify-center mt-4">
         <Animate>
           <ChartDiv labels={label} values={values} />
         </Animate>

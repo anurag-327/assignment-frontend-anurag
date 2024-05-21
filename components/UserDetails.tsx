@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export default function UserDetails() {
   return (
-    <div className="md:w-[300px] w-full p-4 bg-white border shadow-sm md:rounded-3xl rounded-xl">
+    <div className="md:w-[300px] md:fixed z-[100] md:min-h-[750px] w-full p-4 bg-white border shadow-sm md:rounded-3xl rounded-xl">
       <div className="flex gap-2">
         <div className="">
           <Image

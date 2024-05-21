@@ -1,9 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Poppins } from "next/font/google";
+
 import "./globals.css";
 import Header from "@/components/ui/Header";
-
-const font = Inter({ subsets: ["latin"] });
+import { SpaceGrostek } from "@/fonts/font";
 
 export const metadata: Metadata = {
   title: "Assignment-Anurag",
@@ -17,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${font.className} bg-gray-100`}>
+      <body className={`${SpaceGrostek.className} bg-gray-100`}>
         <Header />
         {children}
       </body>
@@ -25,4 +24,4 @@ export default function RootLayout({
   );
 }
 
-// weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+// ,weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]

@@ -14,7 +14,7 @@ import { useState } from "react";
 
 export default function UserDetails() {
   return (
-    <div className="md:w-[300px] md:fixed z-[100] md:min-h-[750px] w-full p-4 bg-white border shadow-sm md:rounded-3xl rounded-xl">
+    <div className="md:w-[300px] md:fixed z-[50] md:min-h-[750px] w-full p-4 bg-white border shadow-sm md:rounded-3xl rounded-xl">
       <div className="flex gap-2">
         <div className="">
           <Image
@@ -95,10 +95,10 @@ function ChapterWiseReportStats() {
       {showDropdown && (
         <div className="flex flex-1 mt-2 flex-col justify-between gap-1">
           {chapterWiseData.map((chapter, index) => (
-            <li key={chapter.chapter} className="ml-6 list-none">
+            <li key={chapter.chapter} className="ml-6 list-none w-full">
               <button
                 key={chapter.chapter}
-                className={`p-1 rounded-md hover:bg-gray-100 font-[450] text-gray-500`}
+                className={`p-1 rounded-md hover:bg-gray-100 w-full text-start font-[450] text-gray-500`}
                 onClick={() => setChapter(chapter)}
               >
                 {chapter.chapter}

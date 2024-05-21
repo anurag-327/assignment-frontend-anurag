@@ -6,6 +6,7 @@ import CalendarHeatmap from "react-calendar-heatmap";
 import HeatMap, { HeatMapValue } from "@uiw/react-heat-map";
 import "react-calendar-heatmap/dist/styles.css";
 import { getMonthStartEndDates } from "@/utils/helper";
+import { poppins } from "@/fonts/font";
 
 export default function HeatMapPage() {
   return (
@@ -76,7 +77,6 @@ function Map() {
     </div>
   );
 }
-
 function StreakData() {
   return (
     <>
@@ -87,60 +87,11 @@ function StreakData() {
         </span>
       </div>
       <div className="flex sm:mt-4 flex-col gap-1 text-center">
-        <span className="text-6xl font-extrabold">{userData.maxStreak}</span>
+        <span className={`text-6xl ${poppins.className} font-extrabold`}>
+          {userData.maxStreak}
+        </span>
         <span className="text-xs font-semibold text-gray-600">Max. Streak</span>
       </div>
     </>
   );
 }
-{
-  /* <HeatMap
-              value={monthData}
-              startDate={startDate}
-              endDate={endDate}
-              weekLabels={false}
-              monthPlacement="bottom"
-              rectRender={(props, data) => {
-                return (
-                  <Tooltip
-                    placement="top"
-                    content={`count: ${data.count || 0}`}
-                  >
-                    <rect {...props} />
-                  </Tooltip>
-                );
-              }}
-              panelColors={{
-                0: "#f4decd",
-                2: "#e4b293",
-                4: "#d48462",
-                10: "#c2533a",
-                20: "#ad001d",
-                30: "#000",
-              }}
-            /> */
-}
-
-// function Map2() {
-//   return (
-//     <div className="mt-4">
-//       <CalendarHeatmap
-//         startDate={getDateXDaysAgo(204)}
-//         endDate={today}
-//         values={providedData}
-//         classForValue={(value) => {
-//           if (!value) {
-//             return "color-empty";
-//           }
-//           return `color-scale-${value.count}`;
-//         }}
-//         tooltipDataAttrs={(value) => {
-//           return {
-//             "data-tip": `${value.date}: ${value.count} activities`,
-//           };
-//         }}
-//         showWeekdayLabels={false}
-//       />
-//     </div>
-//   );
-// }

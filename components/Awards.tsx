@@ -38,15 +38,15 @@ function Modal({
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   return (
-    <div className="fixed z-50 flex items-center justify-center w-screen min-h-screen md:h-screen top-0 left-0 bg-black overlay bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70">
-      <div className="md:max-w-lg w-full md:min-w-[600px] md:rounded-2xl z-20 opacity-100 md:p-8 p-4 bg-white mx-auto">
+    <div className="fixed z-[100] flex items-center justify-center w-screen min-h-screen top-0 left-0 bg-black bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-70 py-8">
+      <div className="md:max-w-lg h-[500px] overflow-scroll md:h-full w-[80%] md:min-w-[600px] md:rounded-2xl rounded-xl z-20 opacity-100 md:p-8 p-4 bg-white mx-auto">
         <div className="flex items-center justify-between w-full">
           <span className="text-lg font-semibold">Awards List</span>
           <button onClick={() => setShowModal(false)}>
             <X size={24} />
           </button>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-4 w-full  justify-center items-center">
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-6 mt-4 w-full  justify-center items-center">
           {badges.slice(4).map((award, index) => (
             <Card data={award} key={index} />
           ))}

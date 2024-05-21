@@ -46,10 +46,10 @@ function ModuleDiv({ data }: { data: ModuleWiseDistribution }) {
           {data.data.map((x: Module) => (
             <div
               key={x.name}
-              className="flex text-lg justify-between font-[550] text-gray-500"
+              className="flex text-lg justify-between font-[700] text-gray-500"
             >
               <div>{x.name}</div>
-              <div>{x.question}</div>
+              <div className="text-black">{x.question}</div>
             </div>
           ))}
         </div>

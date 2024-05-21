@@ -1,5 +1,6 @@
 import { ChapterRanking } from "@/@types/types";
 import chapterWiseRanking from "@/data/chapterWiseRanking";
+import { poppins } from "@/fonts/font";
 import Image from "next/image";
 
 export default function Ranking() {
@@ -46,7 +47,9 @@ function Module({ data }: { data: ChapterRanking }) {
           />
         </div>
         <div className="flex text-sm flex-col text-center">
-          <span className="text-3xl font-extrabold">{data.currentRanking}</span>
+          <span className={` ${poppins.className} text-3xl font-extrabold`}>
+            {data.currentRanking}
+          </span>
           <span>(min: {data.minRanking})</span>
           <span>{getComment(data.currentRanking)}</span>
         </div>

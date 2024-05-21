@@ -31,3 +31,29 @@ export const getMonthStartEndDates = (monthKey: string) => {
   const endDate = new Date(year, month, 0);
   return { startDate, endDate };
 };
+
+export function countDaysWithPositiveCount(data: DailyDistribution[]) {
+  let count = 0;
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].count > 0) {
+      count++;
+    }
+  }
+  return count;
+}
+
+export function getDaysInMonth(month: string) {
+  const [year, monthIndex] = month.split("/").map(Number);
+  const nextMonth = new Date(year, monthIndex, 1);
+  nextMonth.setDate(0);
+  return nextMonth.getDate();
+}
+
+export function formatMonth(monthString: any) {
+  const [year, monthIndex] = monthString.split("/");
+  const month = new Date(year, parseInt(monthIndex, 10) - 1).toLocaleDateString(
+    "en-US",
+    { month: "short" }
+  );
+  return month;
+}

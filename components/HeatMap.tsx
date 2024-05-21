@@ -5,8 +5,16 @@ import { Tooltip } from "react-tooltip";
 import CalendarHeatmap from "react-calendar-heatmap";
 import HeatMap, { HeatMapValue } from "@uiw/react-heat-map";
 import "react-calendar-heatmap/dist/styles.css";
-import { getMonthStartEndDates } from "@/utils/helper";
+import {
+  countDaysWithPositiveCount,
+  formatMonth,
+  getDaysInMonth,
+  getMonthStartEndDates,
+} from "@/utils/helper";
+import maybadge from "@/public/maybadge.png";
 import { poppins } from "@/fonts/font";
+import React from "react";
+import Image from "next/image";
 
 export default function HeatMapPage() {
   return (
@@ -46,35 +54,59 @@ function MapHeader() {
   );
 }
 function Map() {
+  const customStyle = `
+  .react-calendar-heatmap-month-label {
+    display: none !important;
+  }
+`;
   return (
-    <div className="flex gap-2 mt-4 md:max-w-[400px] lg:max-w-[420px] justify-center w-full no-scrollbar overflow-scroll">
+    <div className="flex gap-2 mt-4 md:max-w-[400px] lg:max-w-[460px] justify-center w-full no-scrollbar overflow-scroll">
       {Array.from(monthlydata.keys()).map((monthKey, index) => {
         const monthData = monthlydata.get(monthKey);
         const { startDate, endDate } = getMonthStartEndDates(monthKey);
         return (
           <div key={monthKey} className="">
+            <style>{customStyle}</style>
             <h2 className="w-[60px]"></h2>
-            <CalendarHeatmap
-              startDate={startDate}
-              endDate={endDate}
-              values={monthData}
-              classForValue={(value: any) => {
-                if (!value) {
-                  return "color-empty";
-                }
-                if (value.count > 10) {
-                  return `color-scale-10`;
-                }
-                return `color-scale-${value.count}`;
-              }}
-              tooltipDataAttrs={(value: HeatMapValue) => ({
-                "data-tooltip-id": "tooltip",
-                "data-tooltip-content":
-                  value.date != null && value.count > 0
-                    ? `${value.count} submissions on ${value.date}`
-                    : `No submissions found`,
-              })}
-            />
+
+            <div className="h-[110px] -mt-1">
+              <CalendarHeatmap
+                startDate={startDate}
+                endDate={endDate}
+                values={monthData}
+                transformDayElement={(rect, value, index) => {
+                  return React.cloneElement(rect, {
+                    style: { rx: 2, ry: 2 },
+                  });
+                }}
+                classForValue={(value: any) => {
+                  if (!value) {
+                    return "color-empty";
+                  }
+                  if (value.count > 10) {
+                    return `color-scale-10`;
+                  }
+                  return `color-scale-${value.count}`;
+                }}
+                tooltipDataAttrs={(value: HeatMapValue) => ({
+                  "data-tooltip-id": "tooltip",
+                  "data-tooltip-content":
+                    value.date != null && value.count > 0
+                      ? `${value.count} submissions on ${value.date}`
+                      : `No submissions found`,
+                })}
+              />
+            </div>
+            <div className="flex justify-center items-center">
+              {countDaysWithPositiveCount(monthData) ===
+              getDaysInMonth(monthKey) ? (
+                <Image className="w-6 h-6 mx-auto" src={maybadge} alt="bagde" />
+              ) : (
+                <span className="text-xs mt-1.5 text-center text-gray-500">
+                  {formatMonth(monthKey)}
+                </span>
+              )}
+            </div>
             <Tooltip id="tooltip" />
           </div>
         );

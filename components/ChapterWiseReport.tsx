@@ -66,7 +66,7 @@ function ChartDiv({ labels, values }: { labels: string[]; values: number[] }) {
         label: "Value",
         data: values,
         backgroundColor: ["#fdba74", "#fcd34d", "#4ade80"],
-        borderWidth: 1,
+        borderWidth: 0,
       },
     ],
   };

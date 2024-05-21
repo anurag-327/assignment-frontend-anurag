@@ -10,6 +10,7 @@
 6. [Components](#components)
    - [Line and Donut Charts Implementation](#charts)
    - [Daily Activity Heatmap](#activity-heatmap)
+7. [Assumptions](#aassumptions)
 
 ## Introduction
 
@@ -197,3 +198,7 @@ Use the `tooltipDataAttrs` property to add tooltips, displaying the number of su
 ### Challenge 3: Tooltip Integration
 
 **Solution:** Use `tooltipDataAttrs` to add custom tooltips for each date in the heatmap. This provides users with detailed information about their activity.
+
+## Assumptions
+
+**The daily distribution data has been modified to display badges on the heatmap only when the user has submitted data for the entire month.**
